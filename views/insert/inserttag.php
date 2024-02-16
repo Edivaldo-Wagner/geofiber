@@ -1,0 +1,31 @@
+<?php
+
+$connection = mysqli_connect("localhost","root","");
+$db = mysqli_select_db($connection, 'geo');
+
+if($_POST)
+{
+
+
+   
+    
+
+    $Nome = $_POST['Nome'];
+    $grupos_disponiveis = $_POST['grupos_disponiveis'];
+    
+    
+    //$securePass = md5($Permitir_venda);
+
+    $query = "INSERT INTO tag (Nome, Grupo) VALUES ('$Nome', '$grupos_disponiveis');";
+    $query_run = mysqli_query($connection, $query);
+
+    if($query_run){
+        echo "<script>alert('Registado com sucesso!')</script>";
+        header('Location:http://localhost/admin/views/tag.php');
+       
+    }else{
+        echo "<script>alert('Erro projeto já existe!')</script>";
+    }
+}
+
+?>
